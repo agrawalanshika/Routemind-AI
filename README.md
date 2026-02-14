@@ -5,6 +5,8 @@ RouteMind AI is an interactive reinforcement learning simulation based on the Ta
 <img align="left" width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/dddcb393-f133-4f7d-a34e-85523a4afcd6" />
 
 
+
+
 ---
 
 
