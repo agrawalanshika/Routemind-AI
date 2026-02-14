@@ -6,8 +6,6 @@ RouteMind AI is an interactive reinforcement learning simulation based on the Ta
 
 ---
 
----
-
 
 ## 📌 Key Features
 
@@ -47,8 +45,6 @@ The Q-learning agent was trained in a separate Jupyter/Colab notebook which cont
 
 
 <img align="left" width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/7d7af0d3-a476-45fc-bf9b-44dae0a393a0" />
-
----
 
 ---
 
