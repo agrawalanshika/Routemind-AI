@@ -1,6 +1,8 @@
 # 🚕 RouteMind AI
 
 RouteMind AI is an interactive reinforcement learning simulation based on the Taxi-v3 environment. It demonstrates how a Q-Learning agent learns to navigate, pick up passengers, and drop them at destinations while minimizing cost. The project includes a real-time web dashboard with visualization, controls, and a Q-value heatmap for interpretability.
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/dddcb393-f133-4f7d-a34e-85523a4afcd6" />
+
 
 ---
 
