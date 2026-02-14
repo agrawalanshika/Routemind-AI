@@ -1,0 +1,486 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2a0000 0%, #120000 40%, #000000 100%);
+  color: #ffffff;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;   /* 🚫 No scrolling */
+}
+
+/* Landing */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 10px 0;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.hero h2 {
+  color: #ff3b3b;
+  margin: 5px 0 20px;
+}
+
+.hero p {
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.hero button {
+  background: linear-gradient(135deg, #ff2a2a, #b80000);
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,0,0,0.5);
+}
+
+.hero button:hover {
+  transform: scale(1.05);
+}
+
+/* Dashboard */
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 300px 300px;
+  gap: 20px;
+  padding: 20px;
+}
+
+.panel {
+  background: rgba(20, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 20px rgba(255,0,0,0.2);
+}
+
+.panel-title {
+  margin-bottom: 10px;
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.cell {
+  height: 80px;
+  border-radius: 2px;
+  border: 2px solid rgba(255,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cell.taxi {
+  box-shadow: 0 0 15px gold;
+}
+
+.cell.passenger {
+  color: #a855f7;
+}
+
+.cell.destination {
+  box-shadow: 0 0 15px #00ffcc;
+}
+.cell .taxi-icon {
+  font-size: 32px;     /* or whatever looks good in your grid */
+  line-height: 1;
+}
+
+/* Passenger shown on taxi (small, diagonal corner) */
+.cell .passenger-on-taxi {
+  position: absolute;
+  top: 6px;        /* adjust for diagonal position */
+  right: 8px;      /* top-right corner */
+  font-size: 20px; /* smaller than taxi */
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.8;
+}
+
+/* Controls */
+.control-panel button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1a0000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: inset 0 0 10px rgba(255,0,0,0.3);
+}
+
+.control-panel button:hover {
+  background: #2a0000;
+}
+
+/* Stats */
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.running {
+  color: #00ff88;
+}
+.finished {
+  color: #ff4444;
+}
+
+/* ===== Landing Page Effects ===== */
+
+/* Subtle moving fireflies */
+/* ===== Directional Firefly Stream (Behind Taxi + Text) ===== */
+
+.firefly-stream {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.firefly-stream::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  background: transparent;
+}
+
+/* Create particles using box-shadow trick */
+.firefly-stream::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 80, 80, 0.9);
+  box-shadow:
+    20px 10px rgba(255,80,80,0.5),
+    -30px -20px rgba(255,80,80,0.5),
+    60px -10px rgba(255,80,80,0.5),
+    -80px 30px rgba(255,80,80,0.5),
+    100px 40px rgba(255,80,80,0.5),
+    -120px -50px rgba(255,80,80,0.4),
+    150px -30px rgba(255,80,80,0.5),
+    -160px 60px rgba(255,80,80,0.4);
+  filter: blur(0.5px);
+  animation: fireflyStream 6s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes fireflyStream {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Taxi Floating */
+.taxi-wrapper {
+   position: relative;
+  z-index: 2;
+}
+
+.taxi-emoji {
+  font-size: 64px; /* same size vibe as your image */
+  animation: floatTaxi 3s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.taxi-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,200,0,0.6), transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(20px);
+  animation: pulseGlow 2.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes floatTaxi {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Glowing Text */
+.glow-title {
+  font-size: 60px;
+  text-shadow: 0 0 6px rgba(255, 80, 80, 0.6),
+               0 0 12px rgba(255, 50, 50, 0.4);
+}
+
+.glow-subtitle {
+  font-size: 35px;
+  color: #ff3b3b;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6),
+               0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.dashboard-glow{
+  text-shadow: 0 0 6px rgba(255, 0, 0, 0.378),
+               0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtext {
+  font-size: 18px;
+  opacity: 0.85;
+  margin-top: 10px;
+}
+
+
+/* Glowing Button */
+.glow-button {
+  background: linear-gradient(135deg, #ff2a2a, #b80000);
+  border: none;
+  color: white;
+  padding: 16px 34px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 18px rgba(255,0,0,0.8),
+              0 0 30px rgba(255,0,0,0.5);
+  transform: scale(1.04);
+}
+
+
+/* Flash effect for pickup/dropoff */
+.cell.flash-success {
+  animation: flashSuccess 0.6s ease;
+}
+
+@keyframes flashSuccess {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 255, 136, 0);
+    background: transparent;
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.9);
+    background: rgba(0, 255, 136, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(0, 255, 136, 0);
+    background: transparent;
+  }
+}
+
+/* Episode finished overlay */
+#episodeOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#episodeOverlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.overlay-card {
+  background: rgba(20, 0, 0, 0.9);
+  border: 2px solid rgba(0, 255, 136, 0.6);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+  padding: 40px 60px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.overlay-card h2 {
+  color: #00ff88;
+  margin-bottom: 10px;
+}
+
+.overlay-card p {
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.overlay-card button {
+  background: linear-gradient(135deg, #00ff88, #00b36b);
+  border: none;
+  color: #000;
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ready {
+  color: #ffd166; /* yellow-ish */
+}
+
+/* ===== Custom Speed Slider ===== */
+#speedSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff2a2a, #7a0000);
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+/* Chrome / Edge / Safari thumb */
+#speedSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+  transition: transform 0.1s ease;
+}
+
+#speedSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Firefox thumb */
+#speedSlider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+}
+
+/* Firefox track */
+#speedSlider::-moz-range-track {
+  height: 6px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff2a2a, #7a0000);
+}
+
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.home-btn {
+  background: transparent;
+  border: 1px solid #ff3b3b;
+  color: #ff3b3b;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.home-btn:hover {
+  background: rgba(255, 0, 0, 0.12);
+  box-shadow: 0 0 14px rgba(255, 0, 0, 0.5);
+  transform: scale(1.05);
+}
+
+.home-btn svg {
+  display: block;
+}
+.dashboard-header h1 {
+  margin: 0 auto;
+}
+/* Pages (with fade transition, no scroll) */
+.page {
+  position: fixed;      /* 👈 overlay pages on top of each other */
+  inset: 0;             /* top:0; right:0; bottom:0; left:0 */
+  min-height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease-in-out;
+}
+
+.page.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+

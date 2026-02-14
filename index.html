@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Taxi Route Optimization using Reinforcement Learning</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Landing Page -->
+  <div id="landing" class="page active">
+    <div class="firefly-stream"></div>
+
+    <div class="hero">
+      <div class="taxi-wrapper">
+        <div class="taxi-glow"></div>
+        <div class="taxi-emoji">🚕</div>
+      </div>
+
+      <h1 class="glow-title">RouteMind AI</h1>
+      <h2 class="glow-subtitle">Intelligent Taxi Routing with Reinforcement Learning</h2>
+      <p class="hero-subtext">
+        Interactive simulation of a Q-Learning agent solving the Taxi-v3 environment in real time.
+      </p>
+
+      <button id="startBtn" class="glow-button">Start Simulation →</button>
+    </div>
+  </div>
+
+  <!-- Dashboard Page -->
+  <div id="dashboard" class="page">
+  <header class="dashboard-header">
+  <button id="backBtn" class="home-btn" title="Back to Home" aria-label="Back to Home">
+    <!-- Outline Home Icon (SVG) -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9.5L12 3l9 6.5"></path>
+      <path d="M5 10v10h14V10"></path>
+      <path d="M9 20v-6h6v6"></path>
+    </svg>
+  </button>
+
+  <h1 class="dashboard-glow">🚨RouteMind AI Simulation Dashboard</h1>
+</header>
+
+
+    <div class="container">
+      <!-- Grid Panel -->
+      <div class="panel grid-panel">
+        <div class="panel-title">ENVIRONMENT GRID</div>
+        <div id="grid" class="grid"></div>
+        <div class="legend">
+          <span>🚕 Taxi</span>
+          <span>👤 Passenger</span>
+          <span>🏁 Destination</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="panel control-panel">
+        <div class="panel-title">CONTROLS</div>
+        <button id="resetBtn">⟲ Reset</button>
+        <button id="stepBtn">⚡ Step</button>
+        <button id="autoBtn">▶ Auto Run</button>
+        <label style="display:block;margin-top:10px;">Speed</label>
+<input type="range" id="speedSlider" min="100" max="1000" value="600">
+
+      </div>
+
+      <!-- Stats -->
+      <div class="panel stats-panel">
+        <div class="panel-title">STATISTICS</div>
+
+        <div class="stat"><span>Current Action</span><b id="actionVal">-</b></div>
+        <div class="stat"><span>State ID</span><b id="stateVal">-</b></div>
+        <div class="stat"><span>Taxi Position</span><b id="posVal">-</b></div>
+<div class="stat"><span>Passenger</span><b id="passengerVal">-</b></div>
+<div class="stat"><span>Destination</span><b id="destVal">-</b></div>
+        <div class="stat"><span>Reward</span><b id="rewardVal">0</b></div>
+        <div class="stat"><span>Total Reward</span><b id="totalRewardVal">0</b></div>
+        <div class="stat"><span>Step Count</span><b id="stepCountVal">0</b></div>
+        <div class="stat"><span>Episode Status</span><b id="statusVal" class="running">RUNNING</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeOverlay">
+  <div class="overlay-card">
+    <h2>Episode Finished!</h2>
+    <p>Total Reward: <b id="summaryReward">0</b></p>
+    <p>Steps Taken: <b id="summarySteps">0</b></p>
+    <button id="overlayResetBtn">Start New Episode</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
