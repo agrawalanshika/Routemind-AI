@@ -2,18 +2,18 @@
 
 RouteMind AI is an interactive reinforcement learning simulation based on the Taxi-v3 environment. It demonstrates how a Q-Learning agent learns to navigate, pick up passengers, and drop them at destinations while minimizing cost. The project includes a real-time web dashboard with visualization, controls, and a Q-value heatmap for interpretability.
 
-<p>
-<img align="left" width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/dddcb393-f133-4f7d-a34e-85523a4afcd6" /></p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dddcb393-f133-4f7d-a34e-85523a4afcd6" alt="RouteMind AI Home" width="800"/>
+</p>
 
 ---
-
 
 ## 📌 Key Features
 
 - Q-Learning agent trained on the Taxi-v3 environment  
 - Interactive web dashboard for step-by-step and automatic simulation  
 - Real-time grid visualization of the environment  
-- Q-value heatmap to visualize the value function V(s) = maxₐ Q(s, a)  
+- Q-value heatmap to visualize the value function **V(s) = maxₐ Q(s, a)**  
 - Episode statistics: reward, steps, state, action, and status  
 - Simulation controls: Step, Auto Run, Pause, Reset, and Speed control  
 - Clean and modern UI with smooth transitions  
@@ -22,11 +22,11 @@ RouteMind AI is an interactive reinforcement learning simulation based on the Ta
 
 ## 🧠 Project Overview
 
-- The agent uses **Q-Learning**, a model-free reinforcement learning algorithm, to learn an optimal policy for the Taxi-v3 environment.
-- At each state, the agent selects the action with the highest Q-value (greedy policy).
-- The backend serves the environment state and policy decisions through REST APIs.
-- The frontend renders the environment grid, displays episode statistics, and visualizes the learned value function using a heatmap.
-- The heatmap represents the state-value function V(s) = maxₐ Q(s, a), allowing users to interpret how the agent evaluates different positions in the grid.
+- The agent uses **Q-Learning**, a model-free reinforcement learning algorithm, to learn an optimal policy for the Taxi-v3 environment.  
+- At each state, the agent selects the action with the highest Q-value (greedy policy).  
+- The backend serves the environment state and policy decisions through REST APIs.  
+- The frontend renders the environment grid, displays episode statistics, and visualizes the learned value function using a heatmap.  
+- The heatmap represents the state-value function **V(s) = maxₐ Q(s, a)**, allowing users to interpret how the agent evaluates different positions in the grid.  
 
 ---
 
@@ -42,10 +42,13 @@ RouteMind AI is an interactive reinforcement learning simulation based on the Ta
 
 The Q-learning agent was trained in a separate Jupyter/Colab notebook which contains the full training loop, experiments, and Q-table generation process.
 
-<img align="left" width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/6db5d6b4-335f-4298-826f-8cacdbd657d3" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6db5d6b4-335f-4298-826f-8cacdbd657d3" alt="Training Results 1" width="700"/>
+</p>
 
-
-<img align="left" width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/7d7af0d3-a476-45fc-bf9b-44dae0a393a0" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7d7af0d3-a476-45fc-bf9b-44dae0a393a0" alt="Training Results 2" width="800"/>
+</p>
 
 ---
 
@@ -57,6 +60,7 @@ Install dependencies:
 
 ```bash
 pip install flask flask-cors gymnasium numpy
+
 ```
 
 Run the Flask server:
