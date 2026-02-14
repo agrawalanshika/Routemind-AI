@@ -72,9 +72,13 @@ Use Step, Auto Run, Pause, and Reset to control the simulation
 ## 📊 What This Project Demonstrates
 
 Practical implementation of Reinforcement Learning using Q-Learning
+
 Integration of an ML backend with an interactive web frontend
+
 Real-time environment simulation and visualization
+
 Interpretation of learned policies using a Q-value heatmap
+
 Building explainable and user-friendly AI systems
 
 ---
