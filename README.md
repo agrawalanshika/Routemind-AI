@@ -4,8 +4,8 @@
 
 An end-to-end RL project pairing a trained Q-Learning agent with a real-time, browser-based dashboard for visualizing decision-making, state transitions, and learned value functions.
 
-<p align="center">
-  <img src="assets/demo.gif" alt="RouteMind AI Home" width="800"/>
+<p align="left">
+  <img src="https://raw.githubusercontent.com/agrawalanshika/Routemind-AI/main/Demo.gif" alt="RouteMind AI Demo" width="900"/>
 </p>
 
 ---
@@ -74,11 +74,11 @@ The trained agent was benchmarked against a random-action baseline over 200 eval
 
 A learning-rate study (α = 0.1 vs α = 0.7) also confirmed that higher α values converge faster on this environment, at the cost of noisier early training.
 
-<p align="center">
+<p align="left">
   <img src="https://github.com/user-attachments/assets/6db5d6b4-335f-4298-826f-8cacdbd657d3" alt="Training convergence curve" width="700"/>
 </p>
 
-<p align="center">
+<p align="left">
   <img src="https://github.com/user-attachments/assets/7d7af0d3-a476-45fc-bf9b-44dae0a393a0" alt="Trained vs random agent comparison" width="800"/>
 </p>
 
